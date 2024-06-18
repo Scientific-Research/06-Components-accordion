@@ -1,0 +1,154 @@
+/*
+SPACING SYSTEM (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+FONT SIZE SYSTEM (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+*/
+
+/*MAIN COLOR: #087f5b
+GREY COLOR: #343a40
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ------------------------ */
+/* GENERAL STYLES */
+/* ------------------------ */
+body {
+  font-family: "Inter", sans-serif;
+  color: #343a40;
+  /* border-bottom: 8px solid #087f5b; */
+  line-height: 1; /*line-height get herited by other elements - that's why as GLOBAL RESET, we can use it here!*/
+}
+
+.accordion {
+  width: 700px;
+  /* margin: 350px 700px; */
+  margin: 100px auto; /*bring div element in the middle top of the page!*/
+  /* background-color: red; */
+
+  /*to separate every item(accordion) from another one with row gap of 24px => we do it here in container element(accordion) as parent, because item is child of this parent.s*/
+  /* display: flex;
+  flex-direction: column;
+  row-gap: 24px; 
+  
+  or we can use the following statements that i used below => that's why i commented above flex statement out!:
+  margin-bottom: 24px;
+  .item:last-child {
+  margin-bottom: 0;
+}*/
+}
+
+.item {
+  /* horizontal offset, vertical offset, Blurr, rgba*/
+  box-shadow: 0 0 32px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+
+  /* CSS GRID LAYOUT: */
+  display: grid;
+  /* auto: witdh is set automatically based on the content! */
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto 1fr; /*auto: means it takes space what it needs - 1fr: means it fill up the remaining space!*/
+
+  column-gap: 24px;
+  /* row-gap: 32px; */
+  row-gap: 0;
+
+  align-items: center; /*to align grid items themselves vertically inside the cells*/
+
+  margin-bottom: 24px; /*we can use above flex => see above*/
+}
+
+/*we can use above flex => see above*/
+.item:last-child {
+  margin-bottom: 0;
+}
+
+/*the first and last item have row-gap:0 but the second item(child has row-gap:32)*/
+.item:nth-child(2) {
+  row-gap: 32px;
+}
+
+/* We can use below flexbox or CSS GRID Layout! */
+/* .number-text-svg {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+} */
+
+.number,
+.text {
+  font-size: 24px;
+  font-weight: 500;
+  /* color: #087f5b; */
+}
+
+.number {
+  color: #ced4da;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  stroke: #087f5b;
+}
+
+/*hide first and last accordions*/
+.hidden-box {
+  grid-column: 2/3;
+  display: none;
+}
+
+/*show only the content of second accordion*/
+.show-me {
+  display: grid; /*or block or inline-block => all are working!*/
+  /*OR*/
+  /* display: flex;
+  flex-direction: column; this is necessary, otherwise we see the contents in a row direction! but we want to see it in columns*/
+}
+
+/*to make the green border above the opened accordion*/
+.open {
+  border-top: 5px solid #087f5b;
+}
+
+/*to make the number, text and SVG green*/
+.open .number,
+.text,
+svg {
+  color: #087f5b;
+}
+
+.hidden-box p {
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.hidden-box ul {
+  color: #868e96;
+  margin-left: 20px;
+  /* margin-bottom: 20px; */
+
+  /* Using flex or last-child below:*/
+  display: flex;
+  flex-direction: column;
+  /*By default flex-direction is row, we have to change the direction of flex to column, otherwise, we see all li in horizontal direction side by side as a row!*/
+  gap: 12px;
+  /* align-items: center; */
+  /*align the items horizontally, because flex-direction is set to column.
+  but normally as default flex-direction is row and align-items:center align the items vertically and not horizontally! */
+}
+
+/*Instead of using above flex, we can use the folowing two statements: => anyway, we get the same result!*/
+/* .hidden-box ul li {
+  margin-bottom: 12px;
+}
+
+.hidden-box ul li:last-child {
+  margin-bottom: 0px;
+} */
